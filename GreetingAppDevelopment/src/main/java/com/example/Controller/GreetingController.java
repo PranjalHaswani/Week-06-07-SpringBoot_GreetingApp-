@@ -58,4 +58,12 @@ public class GreetingController {
         String greetingMessage = greetingService.getGreetingMessage(firstName, lastName);
         return new Greeting(greetingMessage);
     }
+
+    //UC4
+    // POST method to save the greeting message
+    @PostMapping("/save")
+    public Greeting saveGreeting(@RequestBody String message) {
+        // Call the service to save the greeting message
+        return greetingService.saveGreetingMessage(message);
+    }
 }
