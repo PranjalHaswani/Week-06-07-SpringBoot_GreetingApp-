@@ -42,4 +42,12 @@ public class GreetingController {
         // Return confirmation that greeting is deleted
         return new Greeting("Greeting deleted");
     }
-}
+    //UC2
+
+    @GetMapping("/hello")
+    public Greeting getGreeting() {
+        String greetingMessage = greetingService.getGreetingMessage();
+        return new Greeting(greetingMessage);
+        }
+    }
+

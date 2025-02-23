@@ -16,4 +16,9 @@ public class GreetingService {
             return "Hello World";
         }
     }
-}
+    //UC2
+    public String getGreetingMessage() {
+            return "Hello World";
+        }
+    }
+
