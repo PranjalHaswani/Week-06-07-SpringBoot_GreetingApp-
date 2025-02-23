@@ -2,6 +2,8 @@ package com.example.Controller;
 
 import com.example.model.Greeting;
 import com.example.service.GreetingService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -65,5 +67,17 @@ public class GreetingController {
     public Greeting saveGreeting(@RequestBody String message) {
         // Call the service to save the greeting message
         return greetingService.saveGreetingMessage(message);
+    }
+
+    // GET method to find a greeting by ID
+    @GetMapping("/{id}")
+    public Greeting getGreetingById(@PathVariable Long id) {
+        // Call the service to find the greeting by ID and return it
+        return greetingService.getGreetingById(id);
+    }
+    // Exception handler for Greeting not found
+    @ExceptionHandler(RuntimeException.class)
+    public ResponseEntity<String> handleGreetingNotFound(RuntimeException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 }

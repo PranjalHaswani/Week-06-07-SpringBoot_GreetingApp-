@@ -23,6 +23,15 @@ public class Greeting {
         this.message = message;
     }
 
+    // Getters and setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     // Getter and setter methods for message
     public String getMessage() {
         return message;
@@ -32,3 +41,5 @@ public class Greeting {
         this.message = message;
     }
 }
+
+
