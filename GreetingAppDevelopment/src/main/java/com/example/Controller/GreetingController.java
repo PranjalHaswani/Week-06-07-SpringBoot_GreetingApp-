@@ -48,6 +48,14 @@ public class GreetingController {
     public Greeting getGreeting() {
         String greetingMessage = greetingService.getGreetingMessage();
         return new Greeting(greetingMessage);
-        }
     }
 
+    //UC3
+    // GET method to retrieve the greeting message
+    @GetMapping("/hi")
+    public Greeting getGreetingUC3(@RequestParam(required = false) String firstName,
+                                   @RequestParam(required = false) String lastName){
+        String greetingMessage = greetingService.getGreetingMessage(firstName, lastName);
+        return new Greeting(greetingMessage);
+    }
+}
