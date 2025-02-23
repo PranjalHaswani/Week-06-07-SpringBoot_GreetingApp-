@@ -6,6 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/greet")
@@ -69,6 +71,7 @@ public class GreetingController {
         return greetingService.saveGreetingMessage(message);
     }
 
+    //UC5
     // GET method to find a greeting by ID
     @GetMapping("/{id}")
     public Greeting getGreetingById(@PathVariable Long id) {
@@ -79,5 +82,11 @@ public class GreetingController {
     @ExceptionHandler(RuntimeException.class)
     public ResponseEntity<String> handleGreetingNotFound(RuntimeException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    // GET method to list all greetings
+    @GetMapping("/all")
+    public List<Greeting> getAllGreetings() {
+        return greetingService.getAllGreetings();
     }
 }
