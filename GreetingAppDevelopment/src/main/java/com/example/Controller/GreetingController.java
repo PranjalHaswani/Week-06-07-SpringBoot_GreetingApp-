@@ -1,3 +1,4 @@
+
 package com.example.Controller;
 
 import com.example.model.Greeting;
@@ -83,7 +84,7 @@ public class GreetingController {
     public ResponseEntity<String> handleGreetingNotFound(RuntimeException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
-   //UC6
+    //UC6
     // GET method to list all greetings
     @GetMapping("/all")
     public List<Greeting> getAllGreetings() {
@@ -101,5 +102,16 @@ public class GreetingController {
         }
 
         return new ResponseEntity<>(updatedGreeting, HttpStatus.OK);  // Return updated greeting with 200 status
+    }
+    // UC8 - DELETE method to delete a greeting by ID
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteGreeting(@PathVariable Long id) {
+        boolean isDeleted = greetingService.deleteGreeting(id);
+
+        if (isDeleted) {
+            return new ResponseEntity<>("Greeting deleted successfully", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Greeting not found", HttpStatus.NOT_FOUND);
+        }
     }
 }

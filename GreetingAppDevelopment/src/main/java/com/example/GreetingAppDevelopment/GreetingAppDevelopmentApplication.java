@@ -1,8 +1,6 @@
 package com.example.GreetingAppDevelopment;
 
-import com.example.model.Greeting;
 import com.example.service.GreetingService;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -23,4 +21,6 @@ public class GreetingAppDevelopmentApplication{
 	public GreetingAppDevelopmentApplication(GreetingService greetingService) {
 		this.greetingService = greetingService;
 	}
+
+
 }

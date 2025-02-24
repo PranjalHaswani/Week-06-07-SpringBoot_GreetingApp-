@@ -1,3 +1,4 @@
+
 package com.example.service;
 
 import com.example.model.Greeting;
@@ -82,4 +83,16 @@ public class GreetingService {
         greetingRepository.save(greeting);
     }
 
+    // UC8 - Method to delete a greeting by ID
+    public boolean deleteGreeting(Long id) {
+        // Check if the greeting exists
+        Optional<Greeting> existingGreeting = greetingRepository.findById(id);
+
+        if (existingGreeting.isPresent()) {
+            greetingRepository.deleteById(id);  // Delete the greeting
+            return true;
+        }
+
+        return false;
+    }
 }
