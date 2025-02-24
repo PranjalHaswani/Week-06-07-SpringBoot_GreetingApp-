@@ -83,10 +83,23 @@ public class GreetingController {
     public ResponseEntity<String> handleGreetingNotFound(RuntimeException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
-
+   //UC6
     // GET method to list all greetings
     @GetMapping("/all")
     public List<Greeting> getAllGreetings() {
         return greetingService.getAllGreetings();
+    }
+
+    //UC7
+    // PUT method to edit a greeting message
+    @PutMapping("/{id}")
+    public ResponseEntity<Greeting> editGreeting(@PathVariable Long id, @RequestBody String newMessage) {
+        Greeting updatedGreeting = greetingService.updateGreeting(id, newMessage);
+
+        if (updatedGreeting == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);  // Return 404 if greeting not found
+        }
+
+        return new ResponseEntity<>(updatedGreeting, HttpStatus.OK);  // Return updated greeting with 200 status
     }
 }
